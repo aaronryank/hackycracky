@@ -105,6 +105,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# maybe eventually make the api token for urbexplug.com a bit more secure
-export MAPTOKEN='sk.eyJ1IjoidXJiZXhwbHVnIiwiYSI6ImNseXBnNThhZDA4ZXYybG42NWlpY3hpdXkifQ.0b6LB3ep67pZDzmUFRlBFg'
