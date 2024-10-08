@@ -1,0 +1,10 @@
+xzcat: decompress xz to stdout
+htop: display system hardware usage
+vcgencmd get_throttled: check for undervoltage warnings
+vcgencmd measure_temp: check cpu temperature
+
+systemctl list-unit-files: display services
+
+tar -ztvf: list contents of tar.gz
+tar -czvf tarball source: create tar.gz from source
+ln -s WHERE-IT-COMES-FROM WHERE-IT-GO

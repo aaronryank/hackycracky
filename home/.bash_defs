@@ -1,0 +1,40 @@
+# ~/.bash_defs
+
+# basic aliases
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+
+# always root
+alias apt='sudo apt'
+alias systemctl='sudo systemctl'
+alias su='sudo su'
+alias ifconfig='sudo ifconfig'
+alias nmcli='sudo nmcli'
+alias raspi-config='sudo raspi-config'
+alias nginx='sudo nginx'
+
+# lesstyping functions
+bigfiles()  {	sudo du -h $1 | sort -rh | head -20; }
+findfile()  {	find $1 -name $2 -exec sudo grep $3 {} /dev/null \; 2>/dev/null; }
+sysrel()    {	sudo systemctl daemon-reload; sudo systemctl restart $1; }
+yapt()      {   sudo apt $1 -y ${@:2}; }
+mkcd()      {	mkdir $1 && cd $1; }
+mkcp()      {   mkdir $2 && cp $1 $2; }
+mkcpd()     {   mkdir $2 && cp $1 $2 && cd $2; }
+gitdir()    {   local gitdirparse=$(git rev-parse --show-toplevel 2>/dev/null); if [ $? ]; then echo $gitdirparse; return 0; fi; echo "Not in a git repo"; return 1; }
+
+# lesstyping aliases
+alias sH='cat ~/.bash_defs && less ~/.bash_defs'
+alias nsH='cat >>~/.bash_defs'
+alias usH='source ~/.bash_defs'
+alias esH='nano ~/.bash_defs'
+alias sun='sudo nano'
+alias aptlug='sudo apt list --upgradable'
+alias aptug='sudo apt upgrade'
+alias aptud='sudo apt update'
+alias apti='sudo apt install'
+alias aptr='sudo apt remove'
+alias sysen='sudo systemctl enable'
+alias systat='sudo systemctl status'
+alias gitdir='git rev-parse --show-toplevel 2>/dev/null'
