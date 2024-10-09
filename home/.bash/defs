@@ -15,14 +15,13 @@ alias raspi-config='sudo raspi-config'
 alias nginx='sudo nginx'
 
 # lesstyping functions
-bigfiles()  {	sudo du -h $1 | sort -rh | head -20; }
-findfile()  {	find $1 -name $2 -exec sudo grep $3 {} /dev/null \; 2>/dev/null; }
+bigfiles()  {	sudo du -ha "$1" | sort -rh | head -20; }
+findfile()  {	find "$1" -name "$2" -exec sudo grep "$3" {} /dev/null \; 2>/dev/null; }
 sysrel()    {	sudo systemctl daemon-reload; sudo systemctl restart $1; }
 yapt()      {   sudo apt $1 -y ${@:2}; }
-mkcd()      {	mkdir $1 && cd $1; }
-mkcp()      {   mkdir $2 && cp $1 $2; }
-mkcpd()     {   mkdir $2 && cp $1 $2 && cd $2; }
-gitdir()    {   local gitdirparse=$(git rev-parse --show-toplevel 2>/dev/null); if [ $? ]; then echo $gitdirparse; return 0; fi; echo "Not in a git repo"; return 1; }
+mkcd()      {	mkdir "$1" && cd "$1"; }
+mkcp()      {   mkdir "$2" && cp "$1" "$2"; }
+mkcpd()     {   mkdir "$2" && cp "$1" "$2" && cd "$2"; }
 
 # lesstyping aliases
 alias sH='cat ~/.bash_defs && less ~/.bash_defs'

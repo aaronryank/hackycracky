@@ -1,0 +1,39 @@
+# .bash/functions
+# larger functions that you wouldn't want displayed with the shorthand dump (sH)
+
+# arguments: [dirname] [files_per_subdirectory]
+largeDirSplit() {
+    origdir=$PWD
+    cd "$1"
+
+    files=($(ls -v))
+
+    count=0
+    dir_num=1
+
+    for file in "${files[@]}"; do
+        if [ -f "$file" ]; then
+            dir=$(printf "%03d" $dir_num)
+            mkdir -p "$dir"
+            mv "$file" "$dir/"
+
+            ((count++))
+
+             if (( count == $2 )); then
+                 count=0
+                 ((dir_num++))
+             fi
+        fi
+    done
+    cd $origdir
+}
+
+getgitdir() {
+    local gitdirparse=$(git rev-parse --show-toplevel 2>/dev/null)
+    if [ $? ]; then
+        echo $gitdirparse
+        return 0
+    fi
+    echo ""
+    return 1
+}

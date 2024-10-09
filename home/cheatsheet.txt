@@ -8,3 +8,5 @@ systemctl list-unit-files: display services
 tar -ztvf: list contents of tar.gz
 tar -czvf tarball source: create tar.gz from source
 ln -s WHERE-IT-COMES-FROM WHERE-IT-GO
+apt-mark showmanual > packages.list
+sort file1 file2 | uniq > combined_sorted_list

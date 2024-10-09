@@ -87,14 +87,6 @@ fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-
-# aliases, functions, etc
-
-if [ -f ~/.bash_defs ]; then
-    . ~/.bash_defs
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -104,4 +96,19 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+fi
+
+# aliases, functions, etc
+if [ -f ~/.bash/defs ]; then
+    . ~/.bash/defs
+fi
+
+# more extensive functions
+if [ -f ~/.bash/functions ]; then
+    . ~/.bash/functions
+fi
+
+# local definitions (not needed on all linux machines)
+if [ -f ~/.bash/localdefs ]; then
+    . ~/.bash/localdefs
 fi
