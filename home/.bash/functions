@@ -37,3 +37,17 @@ getgitdir() {
     echo ""
     return 1
 }
+
+mkcpd() {
+    mkdir $2 && cp $1 $2 && cd $2
+}
+
+ng_if() {
+    sudo ifconfig $1 down
+    sudo nmcli dev set $1 managed no
+    sudo airmon-ng start $1
+}
+
+deauth() {
+    mdk4 $1 d ${@:1}
+}

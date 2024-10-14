@@ -13,28 +13,69 @@ alias ifconfig='sudo ifconfig'
 alias nmcli='sudo nmcli'
 alias raspi-config='sudo raspi-config'
 alias nginx='sudo nginx'
+alias htop='sudo htop'
+alias kill='sudo kill'
+alias airmon-ng='sudo airmon-ng'
+alias airodump-ng='sudo airodump-ng'
+alias aircrack-ng='sudo aircrack-ng'
+alias mdk4='sudo mdk4'
 
 # lesstyping functions
-bigfiles()  {	sudo du -ha "$1" | sort -rh | head -20; }
-findfile()  {	find "$1" -name "$2" -exec sudo grep "$3" {} /dev/null \; 2>/dev/null; }
+bigfiles()  {	sudo du -h $1 | sort -rh | head -20; }
+findfile()  {	find $1 -name $2 -exec sudo grep $3 {} /dev/null \; 2>/dev/null; }
 sysrel()    {	sudo systemctl daemon-reload; sudo systemctl restart $1; }
 yapt()      {   sudo apt $1 -y ${@:2}; }
-mkcd()      {	mkdir "$1" && cd "$1"; }
+mkcd()      {	mkdir $1 && cd $1; }
+mkcp()      {   mkdir $2 && cp $1 $2; }
+wconup()    {   ifconfig $1 up; }
+renet()     {   sudo systemctl reload NetworkManager wpa_supplicant; }
+bigfiles()  {   sudo du -ha "$1" | sort -rh | head -20; }
+yapt()      {   sudo apt $1 -y ${@:2}; }
+mkcd()      {   mkdir "$1" && cd "$1"; }
 mkcp()      {   mkdir "$2" && cp "$1" "$2"; }
 mkcpd()     {   mkdir "$2" && cp "$1" "$2" && cd "$2"; }
 
+# pentesting lesstyping aliases
+alias ng-du='sudo airodump-ng'
+alias ng-cr='sudo aircrack-ng'
+alias ng='sudo airmon-ng'
+alias ng-st='sudo airmon-ng start'
+
 # lesstyping aliases
-alias sH='cat ~/.bash_defs && less ~/.bash_defs'
-alias nsH='cat >>~/.bash_defs'
-alias usH='source ~/.bash_defs'
-alias esH='nano ~/.bash_defs'
+alias sH='cat ~/.bash/defs && less ~/.bash/defs'
+alias nsH='cat >>~/.bash/defs'
+alias usH='source ~/.bash/defs'
+alias esH='nano ~/.bash/defs'
+alias sHf='cat ~/.bash/functions && less ~/.bash/functions'
+alias nsHf='cat >>~/.bash/functions'
+alias usHf='source ~/.bash/functions'
+alias esHf='nano ~/.bash/functions'
 alias sun='sudo nano'
 alias aptlug='sudo apt list --upgradable'
 alias aptug='sudo apt upgrade'
 alias aptud='sudo apt update'
 alias apti='sudo apt install'
 alias aptr='sudo apt remove'
+alias sapt='apt-cache search'
 alias sysen='sudo systemctl enable'
 alias systat='sudo systemctl status'
-alias gd='git rev-parse --show-toplevel 2>/dev/null'
-alias hd='hd -C'
+alias systart='sudo systemctl start'
+alias sys='sudo systemctl'
+alias gitdir='git rev-parse --show-toplevel 2>/dev/null'
+alias ncs='nmcli con show'
+alias nce='nmcli con edit'
+alias ncm='nmcli con mod'
+alias nds='nmcli dev show'
+alias nde='nmcli dev edit'
+alias ndm='nmcli dev mod'
+alias n='nmcli'
+alias nrwo='nmcli radio wifi on'
+alias gc='git clone'
+alias gal='git add --all'
+alias gcm='git commit -m'
+alias myip='hostname -I'
+alias gettemp='vcgencmd measure_temp'
+alias getvolt='vcgencmd measure_volts'
+alias gethrot='vcgencmd get_throttled'
+alias getcmds='vcgencmd commands'
+alias getconf='vcgencmd get_config int'
