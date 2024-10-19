@@ -1,9 +1,19 @@
 # ~/.bash_defs
 
+#export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export html="/var/www/html"
+export webconf="/etc/nginx/sites-available"
+export hc="/home/aaron/HackyCracky"
+
 # basic aliases
+alias ..='cd ..'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+alias igrep='grep -i'
+alias ngrep='grep -n'
+alias egrep='grep -e'
+alias ingrep='grep -in'
 
 # always root
 alias apt='sudo apt'
@@ -34,6 +44,7 @@ yapt()      {   sudo apt $1 -y ${@:2}; }
 mkcd()      {   mkdir "$1" && cd "$1"; }
 mkcp()      {   mkdir "$2" && cp "$1" "$2"; }
 mkcpd()     {   mkdir "$2" && cp "$1" "$2" && cd "$2"; }
+mgrep()     {   grep "$@" /dev/null; }
 
 # pentesting lesstyping aliases
 alias ng-du='sudo airodump-ng'
@@ -79,3 +90,4 @@ alias getvolt='vcgencmd measure_volts'
 alias gethrot='vcgencmd get_throttled'
 alias getcmds='vcgencmd commands'
 alias getconf='vcgencmd get_config int'
+alias colors='. $HOME/.bash/colors'
