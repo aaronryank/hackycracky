@@ -5,12 +5,12 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-@app.route('/h/kindlepi', methods=['POST'])
+@app.route('/hooks/iplog', methods=['POST'])
 def webhook():
     data = request.form.get('ip')
     tnow = datetime.now().strftime("%m/%d/%Y (%H:%M)")
-    with open('/web/tools/log.txt', 'a') as log:
-        log.write(f"Kindlepi on {data} at {tnow}\n")
+    with open('/var/log/ip_hook.txt', 'a') as log:
+        log.write(f"Webhook saw {data} at {tnow}\n")
     return 'IP logged', 200
 
 if __name__ == '__main__':
