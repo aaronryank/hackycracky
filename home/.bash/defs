@@ -23,6 +23,7 @@ alias systemctl='sudo systemctl'
 alias su='sudo su'
 alias ifconfig='sudo ifconfig'
 alias nmcli='sudo nmcli'
+alias nmtui='sudo nmtui'
 alias raspi-config='sudo raspi-config'
 alias nginx='sudo nginx'
 alias htop='sudo htop'
@@ -31,11 +32,13 @@ alias airmon-ng='sudo airmon-ng'
 alias airodump-ng='sudo airodump-ng'
 alias aircrack-ng='sudo aircrack-ng'
 alias mdk4='sudo mdk4'
+alias mdk3='sudo mdk3'
+alias vcgencmd='sudo vcgencmd'
 
 # lesstyping functions
 bigfiles()  {	sudo du -h $1 | sort -rh | head -20; }
 findfile()  {	find $1 -name $2 -exec sudo grep $3 {} /dev/null \; 2>/dev/null; }
-sysrel()    {	sudo systemctl daemon-reload; sudo systemctl restart $1; }
+sysreload() {	sudo systemctl daemon-reload; sudo systemctl restart $1; }
 yapt()      {   sudo apt $1 -y ${@:2}; }
 mkcd()      {	mkdir $1 && cd $1; }
 mkcp()      {   mkdir $2 && cp $1 $2; }
@@ -71,6 +74,7 @@ alias apti='sudo apt install'
 alias aptr='sudo apt remove'
 alias sapt='apt-cache search'
 alias sysen='sudo systemctl enable'
+alias sysdis='sudo systemctl disable'
 alias systat='sudo systemctl status'
 alias systart='sudo systemctl start'
 alias sys='sudo systemctl'
@@ -93,3 +97,4 @@ alias gethrot='vcgencmd get_throttled'
 alias getcmds='vcgencmd commands'
 alias getconf='vcgencmd get_config int'
 alias colors='. $HOME/.bash/colors'
+alias ifc='sudo ifconfig'
