@@ -51,3 +51,14 @@ ng_if() {
 deauth() {
     mdk4 $1 d ${@:1}
 }
+
+wav2mp3() { ffmpeg -i "$1" -acodec mp3 "${1%.*}.mp3"; }
+
+cond_appl_media()
+{
+  mkdir HEIC; mkdir MOV; mkdir JPNG; mkdir MP4
+  mv *.HEIC HEIC
+  mv *.MOV MOV
+  mv *.JPG *.JPEG *.PNG JPNG
+  mv *.MP4 MP4
+}

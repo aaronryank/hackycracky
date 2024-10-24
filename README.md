@@ -1,6 +1,15 @@
 # hackycracky
-hackin' away as I'm crackin' all day
+
+*crackin away cause I'm hackin all day, these rhymes may be gay but they're here anwyay*
 
 repository to maintain a consistent environment throughout various hackycracky machines
 
-to the general public (grand total of zero people that are likely to ever see this) hackycracky is an inside joke and I'm neither hacking nor on crack :D
+current method of deploying environment:
+
+```
+rm ~/.bashrc
+if [ -d ~/.bash ]; then
+    rm -r ~/.bash
+fi
+sync/symbolic.sh
+```

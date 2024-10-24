@@ -55,7 +55,7 @@ alias ng-st='sudo airmon-ng start'
 # lesstyping aliases
 alias sH='cat ~/.bash/defs && less ~/.bash/defs'
 alias nsH='cat >>~/.bash/defs'
-alias usH='source ~/.bash/defs'
+alias usH='source ~/.bashrc'
 alias esH='nano ~/.bash/defs'
 alias sHf='cat ~/.bash/functions && less ~/.bash/functions'
 alias nsHf='cat >>~/.bash/functions'
