@@ -62,3 +62,10 @@ cond_appl_media()
   mv *.JPG *.JPEG *.PNG JPNG
   mv *.MP4 MP4
 }
+
+git_it_done()
+{
+  git add --all &&
+  git commit -m "$@" &&
+  git push
+}

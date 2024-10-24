@@ -3,7 +3,9 @@
 #export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export html="/var/www/html"
 export webconf="/etc/nginx/sites-available"
+# leave these hardcoded so that when you're root it still points to the goddamn hackycracky directory!
 export hc="/home/aaron/HackyCracky"
+export hcg="/home/aaron/HackyCracky/GitRepo"
 
 # basic aliases
 alias ..='cd ..'
