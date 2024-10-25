@@ -28,6 +28,7 @@ largeDirSplit() {
     cd $origdir
 }
 
+# find out the closest git repository in the cwd
 getgitdir() {
     local gitdirparse=$(git rev-parse --show-toplevel 2>/dev/null)
     if [ $? ]; then
@@ -38,22 +39,27 @@ getgitdir() {
     return 1
 }
 
+# mkdir and copy file to it
 mkcpd() {
     mkdir $2 && cp $1 $2 && cd $2
 }
 
+# set up an interface for aircrack-ng suite
 ng_if() {
     sudo ifconfig $1 down
     sudo nmcli dev set $1 managed no
     sudo airmon-ng start $1
 }
 
+# basic deauthentication command
 deauth() {
     mdk4 $1 d ${@:1}
 }
 
+# self explanatory
 wav2mp3() { ffmpeg -i "$1" -acodec mp3 "${1%.*}.mp3"; }
 
+# condense apple media into file type directory
 cond_appl_media()
 {
   mkdir HEIC; mkdir MOV; mkdir JPNG; mkdir MP4
@@ -63,9 +69,33 @@ cond_appl_media()
   mv *.MP4 MP4
 }
 
+# add, commit, and push
 git_it_done()
 {
   git add --all &&
-  git commit -m "$@" &&
+  git commit -m "$1" &&
   git push
 }
+
+# ls with chmod-type bit output prior to drwxrwxrwx notation
+lsbit()
+{
+    ls -l $@ | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf("%0o ",k);print}'
+}
+
+# it's mine!!! it's all mine!!! (everything in this directory, recursively)
+mine()
+{
+    MINEDIR=
+    MYUSER=$(whoami)
+
+    if [ -d "$1" ]; then
+        MINEDIR="$1"
+    else
+        MINEDIR="$PWD"
+    fi
+
+    sudo chown $MYUSER $MINEDIR -R
+    sudo chgrp $MYUSER $MINEDIR -R
+}
+
