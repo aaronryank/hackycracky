@@ -99,3 +99,7 @@ mine()
     sudo chgrp $MYUSER $MINEDIR -R
 }
 
+pipinst()
+{
+    pip3 install $@ --break-system-packages
+}
