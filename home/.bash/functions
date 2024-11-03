@@ -103,3 +103,29 @@ pipinst()
 {
     pip3 install $@ --break-system-packages
 }
+
+chboth()
+{
+    sudo chown $@ && sudo chgrp $@
+}
+
+ren()
+{
+    if [ ! -f $1 ]; then
+        echo "Usage: ren FILENAME"
+        echo "FILENAME to be renamed in local-line-editing mode"
+        return 1
+    fi
+    read -e -p "Edit filename: " -i "$1" new_filename
+    mv $1 $new_filename
+    return $?
+}
+
+words()
+{
+    if [ $1 ]; then
+        awk '{print $1}' "$1"
+    else
+        awk '{print $1}'
+    fi
+}
