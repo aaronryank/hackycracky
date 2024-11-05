@@ -129,3 +129,13 @@ words()
         awk '{print $1}'
     fi
 }
+
+# for when you actually want relevant packages
+saptgrep()
+{
+    for i in ${@}; do
+        apt-cache search $i | grep $i
+        read -rsn1 -p "Press any key to continue..."
+        echo
+    done
+}
