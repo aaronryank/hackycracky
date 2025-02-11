@@ -139,3 +139,9 @@ saptgrep()
         echo
     done
 }
+
+automount()
+{
+    mkdir -p /mnt/$1
+    mount /dev/$1 /mnt/$1
+}
