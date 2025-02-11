@@ -12,5 +12,23 @@ else
     exit 1
 fi
 
+PATHOF_BASHRC="$HOMEDIR/.bashrc"
+PATHOF_BASHDIR="$HOMEDIR/.bash"
+
+if [ -e $PATHOF_BASHRC ]; then
+    rm $PATHOF_BASHRC
+fi
+if [ -e $PATHOF_BASHDIR ]; then
+    if [ -d $PATHOF_BASHDIR ]; then
+        rm -r $PATHOF_BASHDIR
+    else
+        rm $PATHOF_BASHDIR
+    fi
+fi
+
+
 ln -s $GITDIR/home/.bashrc $HOMEDIR/.bashrc
 ln -s $GITDIR/home/.bash   $HOMEDIR/.bash
+
+echo "Please remember to source your .bashrc!"
+echo " ---         source ~/bashrc        ---"
