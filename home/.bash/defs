@@ -6,6 +6,10 @@ export webconf="/etc/nginx/sites-available"
 # leave these hardcoded so that when you're root it still points to the goddamn hackycracky directory!
 export hc="/home/aaron/HackyCracky"
 export hcg="/home/aaron/HackyCracky/GitRepo"
+export hcf="/home/aaron/HackyCracky/flipper"
+export hcff="/home/aaron/HackyCracky/flipper/firmware"
+export hcfa="/home/aaron/HackyCracky/flipper/apps"
+
 
 # basic aliases
 alias ..='cd ..'
